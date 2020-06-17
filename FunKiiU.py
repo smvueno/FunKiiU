@@ -402,21 +402,23 @@ def main(titles=None, keys=None, onlinekeys=False, onlinetickets=False, download
         sys.exit(0)
 
 
-    if download_regions or onlinekeys or onlinetickets or verify:
-        keysite = get_keysite()
-
-        if verify:
-            if not os.path.isfile('titlekeys.json'):
-                print_error("titlekeys.json file does not exists")
-                sys.exit(1)
-        else:
-            print_info(u'Downloading/updating data from {0}'.format(keysite))
-
-            if not download_file('{0}/json'.format(keysite), 'titlekeys.json', retry_count):
-                print_error('Could not download data file... Exiting.\n')
-                sys.exit(1)
-
-            print_info('Downloaded data OK!')
+    if download_regions or onlinekeys or onlinetickets:        
+        while True:
+            keysite = get_keysite()
+            print(u'Downloading/updating data from {}'.format(keysite))
+            try:
+                if not download_file('{}/json'.format(keysite), 'titlekeys.json', retry_count):
+                    print('\nERROR: Could not download data file...')
+                    if ask_update_keysite():
+                        user_input_keysite()
+                else:
+                    break
+            except ValueError:
+                print('\nThe saved keysite doesn\'t appear to be a valid url.')
+                if ask_update_keysite():
+                    user_input_keysite()
+                    
+        print('Downloaded data OK!')
 
         with open('titlekeys.json') as data_file:
             titlekeys_data = json.load(data_file)
