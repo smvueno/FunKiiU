@@ -417,7 +417,7 @@ def main(titles=None, keys=None, onlinekeys=False, onlinetickets=False, download
                 if ask_update_keysite():
                     user_input_keysite()
                     
-        print('Downloaded data OK!')
+        print('Downloaded '.format(title_id, rawdir).' data OK!')
 
         with open('titlekeys.json') as data_file:
             titlekeys_data = json.load(data_file)
