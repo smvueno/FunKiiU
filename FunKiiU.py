@@ -135,7 +135,6 @@ def download_file(url, outfname, retry_count=3, ignore_404=False, expected_size=
                 print_info('Downloading {}\n'.format(bytes2human(outfname)) + ' ' * 40)
                 print_info('File size is {}\n'.format(bytes2human(expected_size)) + ' ' * 40)
                 print_info('File in disk is {}\n'.format(bytes2human(diskFilesize)) + ' ' * 40)
-                print_info('Download complete: {}\n'.format(bytes2human(downloaded_size)) + ' ' * 40)
             except UnicodeEncodeError:
                 print_info('Downloading {}\n'.format(bytes2human(repr(outfname))) + ' ' * 40)
                 print_info('File size is {}\n'.format(bytes2human(expected_size)) + ' ' * 40)
