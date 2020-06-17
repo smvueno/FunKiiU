@@ -335,7 +335,7 @@ def process_title_id(title_id, title_key, name=None, region=None, output_dir=Non
                 return
         elif onlinetickets:
             keysite = get_keysite()
-            tikurl = 'http://{}/ticket/{}.tik'.format(keysite, title_id)
+            tikurl = '{}/ticket/{}.tik'.format(keysite, title_id)
             if not download_file(tikurl, os.path.join(rawdir, 'title.tik'), retry_count):
                 print_error('ERROR: Could not download ticket from {}'.format(keysite))
                 print_error('Skipping title...')
@@ -412,7 +412,7 @@ def main(titles=None, keys=None, onlinekeys=False, onlinetickets=False, download
         else:
             print_info(u'Downloading/updating data from {0}'.format(keysite))
 
-            if not download_file('http://{0}/json'.format(keysite), 'titlekeys.json', retry_count):
+            if not download_file('{0}/json'.format(keysite), 'titlekeys.json', retry_count):
                 print_error('Could not download data file... Exiting.\n')
                 sys.exit(1)
 
