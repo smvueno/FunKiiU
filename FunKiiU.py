@@ -132,13 +132,13 @@ def download_file(url, outfname, retry_count=3, ignore_404=False, expected_size=
             else:
                 diskFilesize = 0
             try:
-                print_info('Downloading {}'.format(bytes2human(outfname)) + ' ' * 40)
-                print_info('File size is {}'.format(bytes2human(expected_size)) + ' ' * 40)
-                print_info('File in disk is {}.'.format(bytes2human(diskFilesize)) + ' ' * 40)
+                print_info('Downloading {}'.format(outfname))
+                print_info('File size is {}'.format(expected_size))
+                print_info('File in disk is {}.'.format(diskFilesize))
             except UnicodeEncodeError:
-                print_info('Downloading {}'.format(bytes2human(repr(outfname))) + ' ' * 40)
-                print_info('File size is {}'.format(bytes2human(expected_size)) + ' ' * 40)
-                print_info('File in disk is {}.'.format(bytes2human(diskFilesize)) + ' ' * 40)
+                print_info('Downloading {}'.format(repr(outfname)))
+                print_info('File size is {}'.format(expected_size))
+                print_info('File in disk is {}.'.format(diskFilesize))
 
             #if not (expected_size is None):
             if expected_size != diskFilesize:
