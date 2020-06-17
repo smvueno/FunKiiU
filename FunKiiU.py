@@ -367,10 +367,10 @@ def process_title_id(title_id, title_key, name=None, region=None, output_dir=Non
             outfnameh3 = os.path.join(rawdir, c_id + '.h3')
 
         if not download_file('{}/{}'.format(baseurl, c_id), outfname, retry_count, expected_size=expected_size):
-            print('ERROR: Could not download content file... Skipping title')
+            print_error('ERROR: Could not download content file... Skipping title')
             return
         if not download_file('{}/{}.h3'.format(baseurl, c_id), outfnameh3, retry_count, ignore_404=True):
-            print('ERROR: Could not download h3 file... Skipping title')
+            print_error('ERROR: Could not download h3 file... Skipping title')
             return
 
         print_info('Title download complete in "{}"'.format(dirname))
