@@ -171,7 +171,7 @@ def download_file(url, outfname, retry_count=3, ignore_404=False, expected_size=
         except URLError:
             print_error('Could not download file...\n')
         except OSError: 
-            print_error("Path '%s' does not exists or is inaccessible" %path) 
+            print_error("Path does not exists or is inaccessible" %path) 
             time.sleep(2)
         else:
             return True
