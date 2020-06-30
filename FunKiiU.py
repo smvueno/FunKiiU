@@ -17,6 +17,7 @@ import sys
 import zlib
 import logging as log
 import signal
+import time
 
 try:
     from urllib.request import urlopen
@@ -169,6 +170,9 @@ def download_file(url, outfname, retry_count=3, ignore_404=False, expected_size=
                 return True
         except URLError:
             print_error('Could not download file...\n')
+        except OSError: 
+            print_error("Path '%s' does not exists or is inaccessible" %path) 
+            time.sleep(2)
         else:
             return True
     return False
